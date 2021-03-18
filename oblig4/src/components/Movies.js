@@ -1,19 +1,26 @@
 import React from 'react';
+import { getMovies } from '../utils/movieService';
 
 const Movies = () => {
     //State
-    // const [value, setNewValue] = React.useState('')
+    const [data, setData] = React.useState([]);
     //funksjon for å håndtere klikk
 
-    const handleClick = () => {
-        console.log("hei!")
-    }
+    const handleClick = async () => {
+        const movies = await getMovies();
+        setData(movies);
+    };
 
     return (
-        //håndter state
-
+                //håndter state
+        //sjekke om data finnes og lengden er større enn 0 
         //håndter klikk
-        <button onClick={handleClick}>Klikk!</button>
+        <p>
+
+        {data?.length > 0 ? <p>{JSON.stringify(data)}</p> : null}
+        
+        <button type="button" onClick={handleClick}>Klikk!</button>
+        </p>
     );
 
 }
