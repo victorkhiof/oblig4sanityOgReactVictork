@@ -5,7 +5,7 @@ import Movie from './components/Movie';
 function App() {
   return (
     <div className="App">
-      <h1>Hallo</h1>
+      <h1>Hallo, jeg er App</h1>
       <Movies />
       <Movie />
     </div>
