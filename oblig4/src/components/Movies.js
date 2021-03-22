@@ -1,33 +1,29 @@
 import React from 'react';
 import { getMovies } from '../utils/movieService';
+import Movie from './Movie.js';
 
 const Movies = () => {
     //State
-    const [data, setData] = React.useState([]);
+    const [movies, setMovies] = React.useState([]);
+    
     //funksjon for å håndtere klikk
-
     const handleClick = async () => {
-        const movies = await getMovies();
-        setData(movies);
-        console.log(data);
+        const tempMovies = await getMovies();
+        setMovies(tempMovies);
     };
 
     return (
-                //håndter state
+        //håndter state
         //sjekke om data finnes og lengden er større enn 0 
         //håndter klikk
         <>
-        <p>test skriving ut data:</p>
         <section>
-        {data?.length > 0 ? data.map(
-            dataEntry => (
-                <>
-                <p>{dataEntry.title}</p>
-                <p>{dataEntry.actor}</p>
-                </>
-                )) : null}
+        {movies?.length > 0 ? 
+            movies.map( movie => (
+                    <Movie movie = {movie} />
+                )) : <p>Ingen filmer</p>}
         
-        <button type="button" onClick={handleClick}>Klikk! Jeg er movies.js-knapp</button>
+        <button type="button" onClick={handleClick}>Klikk for å hente filmer</button>
         </section>
         </>
     );

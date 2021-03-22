@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Movie = ({title}, {actor}) => {
+const Movie = ({movie}) => {
 
     return (
-        <h1>Jeg er Movie-komponenten</h1>
+        <>
+            <h2>{movie.title}</h2>
+            <p>Actor: {movie.actor}</p>
+        </>
     )
 
 }
